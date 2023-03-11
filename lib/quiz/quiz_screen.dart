@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_client/quiz/question_widget.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({Key? key}) : super(key: key);
@@ -11,9 +12,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Hello QUIZ!"),
-      ),
+      body: QuestionWidget(),
     );
   }
 }
