@@ -17,6 +17,38 @@ class _GameScreenState extends State<GameScreen> {
   int player = numberInRow * 15 + 1;
   String direction = "right";
 
+  void moveLeft() {
+    if (!barriers.contains(player - 1)) {
+      setState(() {
+        player--;
+      });
+    }
+  }
+
+  void moveRight() {
+    if (!barriers.contains(player + 1)) {
+      setState(() {
+        player++;
+      });
+    }
+  }
+
+  void moveUp() {
+    if (!barriers.contains(player - numberInRow)) {
+      setState(() {
+        player -= numberInRow;
+      });
+    }
+  }
+
+  void moveDown() {
+    if (!barriers.contains(player + numberInRow)) {
+      setState(() {
+        player += numberInRow;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +91,30 @@ class _GameScreenState extends State<GameScreen> {
                     WalletConnector.launchURL();
                   },
                   child: Text("View Profile"),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_left, size: 72),
+                  onPressed: () {
+                    moveLeft();
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_up, size: 72),
+                  onPressed: () {
+                    moveUp();
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_down, size: 72),
+                  onPressed: () {
+                    moveDown();
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_right, size: 72),
+                  onPressed: () {
+                    moveRight();
+                  },
                 ),
               ],
             ),
