@@ -1,4 +1,4 @@
-import 'package:game_client/quiz/option.dart';
+import 'package:game_client/quiz/model/option.dart';
 
 class Question {
   final String text;

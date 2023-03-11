@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:game_client/quiz/option.dart';
-import 'package:game_client/quiz/question.dart';
+import 'package:game_client/quiz/model/option.dart';
+import 'package:game_client/quiz/model/question.dart';
 
 class OptionsWidget extends StatelessWidget {
   final Question question;

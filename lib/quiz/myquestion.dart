@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_client/quiz/options_widget.dart';
-import 'package:game_client/quiz/question.dart';
+import 'package:game_client/quiz/model/question.dart';
 
 class MyQuestion extends StatefulWidget {
   MyQuestion({Key? key, required this.question}) : super(key: key);
