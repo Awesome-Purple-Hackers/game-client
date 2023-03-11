@@ -1,7 +1,7 @@
 import 'package:game_client/game/game_screen.dart';
 import 'package:game_client/home_screen.dart';
 import 'package:game_client/quiz/quiz_screen.dart';
-import 'package:game_client/quiz/result_screen.dart';
+import 'package:game_client/reward/result_screen.dart';
 import 'package:get/get.dart';
 
 class Routes {
