@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:game_client/game/map.dart';
 import 'package:game_client/game/path.dart';
 import 'package:game_client/game/player.dart';
+import 'package:game_client/routes.dart';
 import 'package:game_client/wallet/wallet_connector.dart';
+import 'package:get/get.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -64,6 +67,12 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     if (player == index) {
+                      if(rooms.contains(index)){
+                        SchedulerBinding.instance.addPostFrameCallback((_) {
+                          Get.toNamed(Routes.quiz);
+                        });
+
+                      }
                       return Player();
                     } else if (barriers.contains(index)) {
                       return Path(
@@ -72,11 +81,19 @@ class _GameScreenState extends State<GameScreen> {
                         child: Text(index.toString()),
                       );
                     } else {
-                      return Path(
-                        innerColor: Colors.grey[800],
-                        outerColor: Colors.grey[900],
-                        child: Text(index.toString()),
-                      );
+                      if (rooms.contains(index)) {
+                        return Path(
+                          innerColor: Colors.yellow[800],
+                          outerColor: Colors.yellow[900],
+                          child: Text(index.toString()),
+                        );
+                      } else {
+                        return Path(
+                          innerColor: Colors.grey[800],
+                          outerColor: Colors.grey[900],
+                          child: Text(index.toString()),
+                        );
+                      }
                     }
                   },
                 ),
