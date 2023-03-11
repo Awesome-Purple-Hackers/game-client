@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:game_client/quiz/options_widget.dart';
 import 'package:game_client/quiz/model/question.dart';
 
-class MyQuestion extends StatefulWidget {
-  MyQuestion({Key? key, required this.question}) : super(key: key);
+class QuestionWidget extends StatefulWidget {
+  QuestionWidget({Key? key, required this.question}) : super(key: key);
   final Question question;
 
   @override
-  State<MyQuestion> createState() => _MyQuestionState();
+  State<QuestionWidget> createState() => _QuestionWidgetState();
 }
 
-class _MyQuestionState extends State<MyQuestion> {
+class _QuestionWidgetState extends State<QuestionWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const SizedBox(height: 32),
         Text(widget.question.text, style: const TextStyle(fontSize: 25)),

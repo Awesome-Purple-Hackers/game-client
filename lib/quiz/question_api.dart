@@ -5,6 +5,7 @@ class QuestionApi {
 
   Future<String> fetchQuestion() async {
     var response = await http.get(Uri.parse(url));
+    print(response.body);
     return response.body;
   }
 }
