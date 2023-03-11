@@ -16,6 +16,15 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(25.0),
+          child: Center(
+            child: Image.network(
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Villainc.svg/1200px-Villainc.svg.png",
+              width: 200,
+            ),
+          ),
+        ),
         const SizedBox(height: 32),
         Text(widget.question.text, style: const TextStyle(fontSize: 25)),
         const SizedBox(height: 32),
