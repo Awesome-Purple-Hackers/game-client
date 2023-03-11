@@ -67,11 +67,10 @@ class _GameScreenState extends State<GameScreen> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     if (player == index) {
-                      if(rooms.contains(index)){
+                      if (rooms.contains(index)) {
                         SchedulerBinding.instance.addPostFrameCallback((_) {
                           Get.toNamed(Routes.quiz);
                         });
-
                       }
                       return Player();
                     } else if (barriers.contains(index)) {
@@ -101,38 +100,56 @@ class _GameScreenState extends State<GameScreen> {
           Expanded(
               child: Container(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("PLAY"),
                 ElevatedButton(
                   onPressed: () {
                     WalletConnector.launchURL();
                   },
                   child: Text("View Profile"),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.keyboard_arrow_left, size: 72),
-                  onPressed: () {
-                    moveLeft();
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.keyboard_arrow_up, size: 72),
-                  onPressed: () {
-                    moveUp();
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.keyboard_arrow_down, size: 72),
-                  onPressed: () {
-                    moveDown();
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.keyboard_arrow_right, size: 72),
-                  onPressed: () {
-                    moveRight();
-                  },
-                ),
+                Column(
+                  children: [
+                    IconButton(
+                        iconSize: 40,
+                        padding: EdgeInsets.all(0),
+                        icon: const Icon(Icons.keyboard_arrow_up),
+                        onPressed: () {
+                          moveUp();
+                        }),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          iconSize: 40,
+                          padding: EdgeInsets.all(0),
+                          icon: const Icon(Icons.keyboard_arrow_left),
+                          onPressed: () {
+                            moveLeft();
+                          },
+                        ),
+                        const SizedBox(width: 48), // Add additional space between the left and right arrows
+                        IconButton(
+                          iconSize: 40,
+                          padding: EdgeInsets.all(0),
+                          icon: const Icon(Icons.keyboard_arrow_right),
+                          onPressed: () {
+                            moveRight();
+                          },
+                        ),
+                      ],
+                    ),
+                    IconButton(
+                      iconSize: 40,
+                      padding: EdgeInsets.all(0),
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      onPressed: () {
+                        moveDown();
+                      },
+                    ),
+                  ],
+                )
               ],
             ),
           ))
