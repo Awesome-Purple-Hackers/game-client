@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Path extends StatelessWidget {
-  const Path({Key? key, this.innerColor, this.outerColor, this.child}) : super(key: key);
 
+
+  const Path({Key? key, this.innerColor, this.outerColor, this.child, this.texture}) : super(key: key);
+  final texture;
   final innerColor;
   final outerColor;
   final child;
@@ -12,16 +14,20 @@ class Path extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(6),
+        // borderRadius: BorderRadius.circular(6),
         child: Container(
-          padding: EdgeInsets.all(4),
+          // padding: EdgeInsets.all(4),
           color: outerColor,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              color: innerColor,
-              child: Center(child: child),
+          child: Container(
+            // color: innerColor,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: texture,
+                fit: BoxFit.fill,
+              ),
+              shape: BoxShape.rectangle,
             ),
+            child: Center(child: child),
           ),
         ),
       ),

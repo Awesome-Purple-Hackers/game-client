@@ -75,22 +75,25 @@ class _GameScreenState extends State<GameScreen> {
                       return Player();
                     } else if (barriers.contains(index)) {
                       return Path(
-                        innerColor: Colors.blue[800],
-                        outerColor: Colors.blue[900],
-                        child: Text(index.toString()),
+                        innerColor: Colors.transparent,
+                        outerColor: Colors.transparent,
+                        texture: AssetImage('lib/images/tree.png'),
+                        // child: Text(index.toString()),
                       );
                     } else {
                       if (rooms.contains(index)) {
                         return Path(
                           innerColor: Colors.yellow[800],
                           outerColor: Colors.yellow[900],
-                          child: Text(index.toString()),
+                          texture: AssetImage('lib/images/torii.png'),
+                          // child: Text(index.toString()),
                         );
                       } else {
                         return Path(
                           innerColor: Colors.grey[800],
                           outerColor: Colors.grey[900],
-                          child: Text(index.toString()),
+                          texture: AssetImage('lib/images/road.png'),
+                          // child: Text(index.toString()),
                         );
                       }
                     }
@@ -105,7 +108,11 @@ class _GameScreenState extends State<GameScreen> {
               children: [
                 Column(
                   children: [
-                    CircleAvatar(radius: 40, child: Image.asset('lib/images/avatar.png'),backgroundColor: Colors.transparent,),
+                    CircleAvatar(
+                      radius: 40,
+                      child: Image.asset('lib/images/avatar.png'),
+                      backgroundColor: Colors.transparent,
+                    ),
                     ElevatedButton(
                       onPressed: () {
                         WalletConnector.launchURL();

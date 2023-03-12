@@ -45,6 +45,14 @@ class _ResultScreenState extends State<ResultScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text("Compass knife", style: TextStyle(fontSize: 30, color: Colors.amber)),
+                  SizedBox(height: 10),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Text("Rarity:", style: TextStyle(fontSize: 20, color: Colors.black)),
+                    Text("Legendary", style: TextStyle(fontSize: 20, color: Colors.amber)),
+                  ]),
+                  SizedBox(height: 20),
+                  Center(child: Image.asset('lib/images/knife.png', width: 200)),
                   SizedBox(height: 20),
                   Center(child: Text(snapshot.data!)),
                 ],

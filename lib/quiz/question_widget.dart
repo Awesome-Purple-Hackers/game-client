@@ -19,8 +19,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         ClipRRect(
           borderRadius: BorderRadius.circular(25.0),
           child: Center(
-            child: Image.network(
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Villainc.svg/1200px-Villainc.svg.png",
+            child: Image.asset(
+              'lib/images/villan.png',
               width: 200,
             ),
           ),
