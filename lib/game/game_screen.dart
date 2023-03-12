@@ -103,11 +103,16 @@ class _GameScreenState extends State<GameScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    WalletConnector.launchURL();
-                  },
-                  child: Text("View Profile"),
+                Column(
+                  children: [
+                    CircleAvatar(radius: 40, child: Image.asset('lib/images/avatar.png'),backgroundColor: Colors.transparent,),
+                    ElevatedButton(
+                      onPressed: () {
+                        WalletConnector.launchURL();
+                      },
+                      child: Text("Inventory"),
+                    ),
+                  ],
                 ),
                 Column(
                   children: [
