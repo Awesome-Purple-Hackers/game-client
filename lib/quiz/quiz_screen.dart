@@ -41,9 +41,10 @@ class _QuizScreenState extends State<QuizScreen> {
                           return QuestionWidget(question: q);
                         } catch (e) {
                           return Center(
-                              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
+                              const Text(
                                 "This villan is busy right now, Please try another room!",
                                 style: TextStyle(fontSize: 18),
                               ),
@@ -65,23 +66,11 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
               ),
-              buildElevatedButton(),
               const SizedBox(height: 20)
             ],
           ),
         ),
       ),
-    );
-  }
-
-  ElevatedButton buildElevatedButton() {
-    return ElevatedButton(
-      onPressed: () {
-        SchedulerBinding.instance.addPostFrameCallback((_) {
-          Get.toNamed(Routes.result);
-        });
-      },
-      child: Text("Claim reward"),
     );
   }
 }

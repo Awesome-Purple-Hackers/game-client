@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:game_client/quiz/options_widget.dart';
 import 'package:game_client/quiz/model/question.dart';
+import 'package:game_client/routes.dart';
+import 'package:get/get.dart';
 
 class QuestionWidget extends StatefulWidget {
   QuestionWidget({Key? key, required this.question}) : super(key: key);
@@ -42,7 +45,19 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             }
           },
         )),
+        Center(child: widget.question.isLocked ? buildElevatedButton() : Text(""))
       ],
+    );
+  }
+
+  ElevatedButton buildElevatedButton() {
+    return ElevatedButton(
+      onPressed: () {
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          Get.toNamed(Routes.result);
+        });
+      },
+      child: Text("Claim reward"),
     );
   }
 }
