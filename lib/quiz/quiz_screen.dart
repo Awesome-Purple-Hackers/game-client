@@ -54,7 +54,7 @@ class _QuizScreenState extends State<QuizScreen> {
           Get.toNamed(Routes.result);
         });
       },
-      child: Text("See the result"),
+      child: Text("Claim reward"),
     );
   }
 }
