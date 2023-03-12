@@ -25,17 +25,44 @@ class _QuizScreenState extends State<QuizScreen> {
           child: Column(
             children: [
               Expanded(
-                child: FutureBuilder<String>(
-                  future: QuestionApi().fetchQuestion(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      Question q = Question.fromJson(json.decode(snapshot.data!)[0]);
-                      return QuestionWidget(question: q);
-                    } else if (snapshot.hasError) {
-                      return Text('${snapshot.error}');
-                    }
-                    return const Center(child: CircularProgressIndicator());
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    // Trigger a refresh of the FutureBuilder when the user pulls down the screen
+                    setState(() {});
                   },
+                  child: FutureBuilder<String>(
+                    future: QuestionApi().fetchQuestion(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        var decode;
+                        try {
+                          decode = json.decode(snapshot.data!)[0];
+                          Question q = Question.fromJson(decode);
+                          return QuestionWidget(question: q);
+                        } catch (e) {
+                          return Center(
+                              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "This villan is busy right now, Please try another room!",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                  // setState(() {});
+                                },
+                                child: Text("Go back"),
+                              ),
+                            ],
+                          ));
+                        }
+                      } else if (snapshot.hasError) {
+                        return Text('${snapshot.error}');
+                      }
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  ),
                 ),
               ),
               buildElevatedButton(),
