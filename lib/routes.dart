@@ -11,11 +11,7 @@ class Routes {
   static const String result = '/result';
 
   static List<GetPage> routes = [
-    GetPage(
-        name: initial,
-        page: () => const HomeScreen(
-              title: 'Home',
-            )),
+    GetPage(name: initial, page: () => HomeScreen()),
     GetPage(name: game, page: () => GameScreen()),
     GetPage(name: quiz, page: () => QuizScreen()),
     GetPage(name: result, page: () => ResultScreen()),
